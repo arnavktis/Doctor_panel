@@ -187,7 +187,7 @@ const Sidebar = () => {
 
             <div 
               style={styles.navItem} 
-              onClick={() => handleNavigationWithReload("/GetDoctors")}
+              onClick={() => handleNavigationWithReload("/GetRooms")}
             >
               <Image
                 src="/icons kit/shop now.png"

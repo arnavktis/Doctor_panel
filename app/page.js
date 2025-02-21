@@ -14,18 +14,46 @@ import Cookies from "js-cookie"; // Import js-cookie
 
 const Page = () => {
   const router = useRouter();
+  const [userRole, setUserRole] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(null); // Initial state is null to avoid flickering
 
-  useEffect(() => {
+  useEffect(()  => {
     // Ensure token is checked only after mounting
-    const checkLoginStatus = () => {
+    const checkLoginStatus = async () => {
       const token = Cookies.get("token"); // Get token inside useEffect
-      if (token) {
-        setIsLoggedIn(true);
-        // router.replace("/Landing/DashboardLog"); // Ensures a full re-render of the page
-        console.log("User is logged in, redirecting to DashboardLog");
-      } else {
+      if (!token) {
         setIsLoggedIn(false);
+        return;
+      } 
+      try{
+        const response = await fetch(`${process.env.NEXT_PUBLIC_URL_HOST}/getUserId`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to fetch user data');
+        }
+
+        const userData = await response.json();
+        
+        setIsLoggedIn(true);
+        setUserRole(userData.role);
+
+        // If user is not a doctor, redirect to home
+        if (userData.role !== 'doctor') {
+          Cookies.remove('token'); // Optional: remove token
+          router.push('/');
+          alert('Access denied. Only doctors can access this panel.');
+        }
+
+      }catch (error) {
+        console.error('Error fetching user data:', error);
+        setIsLoggedIn(false);
+        Cookies.remove('token');
+      } finally {
+        setIsLoading(false);
       }
     };
 
