@@ -130,8 +130,16 @@ const ChatDoctorContent = () => {
       }}
     >
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: "18px", marginBottom: "20px" }}>
-        <div style={{ color: "#c6ffb3", cursor: "pointer" }}>← {userName}</div>
-      </div>
+  <div style={{ color: "#c6ffb3", cursor: "pointer" }}>←  {userName} </div>
+  <a 
+    href="https://workrooms.workplace.com/joinvr/czwgmbksbjja/?source=COPY_LINK" 
+    target="_blank" 
+    rel="noopener noreferrer" 
+    style={{ textDecoration: "none", color: "#007bff", fontWeight: "bold" }}
+  >
+    Join Our VR Meeting
+  </a>
+</div>
       <div style={{ backgroundColor: "#1a1a1a", borderRadius: "15px", padding: "10px", overflowY: "auto", height: "70vh" }} ref={chatBodyRef}>
         <button onClick={handleLoadMore} style={{ marginBottom: "10px" }}>Load More</button>
         {messages.map((msg) => (
