@@ -159,7 +159,7 @@ const Sidebar = () => {
               <span style={styles.navText}>AI Chat</span>
             </div>
 
-            <div 
+            {/* <div 
               style={styles.navItem} 
               onClick={() => handleNavigationWithReload("/BookSession")}
             >
@@ -170,9 +170,9 @@ const Sidebar = () => {
                 height={15}
               />
               <span style={styles.navText}>Book Session</span>
-            </div>
+            </div> */}
 
-            <div 
+            {/* <div 
               style={styles.navItem} 
               onClick={() => handleNavigationWithReload("/Ecommmerce/BuyProduct")}
             >
@@ -183,7 +183,7 @@ const Sidebar = () => {
                 height={15}
               />
               <span style={styles.navText}>Shop Now!</span>
-            </div>
+            </div> */}
 
             <div 
               style={styles.navItem} 
@@ -195,7 +195,7 @@ const Sidebar = () => {
                 width={13}
                 height={15}
               />
-              <span style={styles.navText}>Chat with Doc</span>
+              <span style={styles.navText}>Chat with Patient</span>
             </div>
 
             <div 
